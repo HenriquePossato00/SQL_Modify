@@ -1,0 +1,66 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Montador de Query PostgreSQL</title>
+  <link rel="stylesheet" href="querryBuilder.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Montador de Query PostgreSQL</h1>
+
+    <div class="block">
+      <label for="method">Método:</label>
+      <select id="method">
+        <option value="SELECT">SELECT</option>
+        <option value="INSERT">INSERT</option>
+        <option value="UPDATE">UPDATE</option>
+        <option value="DELETE">DELETE</option>
+      </select>
+    </div>
+
+    <div class="block">
+      <label for="columns">Colunas (separadas por vírgula):</label>
+      <input type="text" id="columns" placeholder="ex: id, nome, idade" />
+    </div>
+
+    <div class="block">
+      <label for="main-table">Tabela principal:</label>
+      <input type="text" id="main-table" placeholder="ex: usuarios" />
+    </div>
+
+    <div class="block">
+      <label for="use-join">Utilizar JOIN?</label>
+      <select id="use-join">
+        <option value="nao">Não</option>
+        <option value="sim">Sim</option>
+      </select>
+    </div>
+
+    <div id="join-options" style="display: none;">
+      <div id="joins-container"></div>
+      <button onclick="addJoinGroup()">Adicionar JOIN</button>
+    </div>
+
+    <div class="block">
+      <label for="where">Condição WHERE (opcional):</label>
+      <input type="text" id="where" placeholder="ex: idade > 18" />
+    </div>
+
+    <button onclick="montarQuery()">Montar Query</button>
+
+    <div class="block">
+      <label for="resultado">Query Final:</label>
+      <textarea id="resultado" rows="6" style="width: 100%;"></textarea>
+    </div>
+
+    <div class="block">
+      <button onclick="alternarTema()">Alternar Tema</button>
+    </div>
+  </div>
+
+  <script src="querryBuilder.js"></script>
+</body>
+</html>
