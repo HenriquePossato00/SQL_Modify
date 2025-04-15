@@ -1,17 +1,22 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Montador de Query PostgreSQL</title>
-  <link rel="stylesheet" href="querryBuilder.css" />
+  <link rel="stylesheet" href="style.css" /> <!-- arquivo CSS para estilização -->
 </head>
+
 <body>
-  <div class="container">
+  <div class="container"> <!-- contêiner principal -->
     <h1>Montador de Query PostgreSQL</h1>
 
     <div class="block">
+      <button onclick="alternarTema()">Alternar Tema</button>
+    </div>
+
+    <div class="block"> <!-- bloco para selecionar o método da query-->
       <label for="method">Método:</label>
       <select id="method">
         <option value="SELECT">SELECT</option>
@@ -21,17 +26,17 @@
       </select>
     </div>
 
-    <div class="block">
+     <div class="block"> <!-- bloco para selecionar digitar as colunas da query -->
       <label for="columns">Colunas (separadas por vírgula):</label>
       <input type="text" id="columns" placeholder="ex: id, nome, idade" />
     </div>
 
-    <div class="block">
+    <div class="block"> <!-- bloco para digitar a tabela principal -->
       <label for="main-table">Tabela principal:</label>
       <input type="text" id="main-table" placeholder="ex: usuarios" />
     </div>
 
-    <div class="block">
+    <div class="block"> <!-- Bloco para selecionar se ultilizara JOIN -->
       <label for="use-join">Utilizar JOIN?</label>
       <select id="use-join">
         <option value="nao">Não</option>
@@ -39,28 +44,41 @@
       </select>
     </div>
 
-    <div id="join-options" style="display: none;">
+    <div id="join-options" style="display: none;"> <!-- bloco para adicionar joins -->
       <div id="joins-container"></div>
       <button onclick="addJoinGroup()">Adicionar JOIN</button>
     </div>
 
-    <div class="block">
+    <div class="block"> <!-- bloco para digitar a condição de junção -->
       <label for="where">Condição WHERE (opcional):</label>
       <input type="text" id="where" placeholder="ex: idade > 18" />
     </div>
 
-    <button onclick="montarQuery()">Montar Query</button>
+    <button onclick="montarBody()">Montar Query</button>
 
-    <div class="block">
+    <div class="block"> <!-- bloco para visualizar a query montada -->
       <label for="resultado">Query Final:</label>
       <textarea id="resultado" rows="6" style="width: 100%;"></textarea>
     </div>
 
-    <div class="block">
-      <button onclick="alternarTema()">Alternar Tema</button>
+    <div class="block"><!-- Área para visualizar o body enviado -->
+      <label for="json-body">Body da Requisição:</label>
+      <textarea id="json-body" rows="6" style="width: 100%;" readonly></textarea>
+    </div>
+
+    <div class="block">    <!-- Botão para enviar requisição -->
+      <button onclick="enviarParaLambda()">Enviar para Lambda</button>
+    </div>
+
+
+    <div class="block">    <!-- Área para visualizar a resposta -->
+      <label for="lambda-response">Resposta da Lambda:</label>
+      <textarea id="lambda-response" rows="6" style="width: 100%;" readonly></textarea>
     </div>
   </div>
 
-  <script src="querryBuilder.js"></script>
+
+  <script src="index.js"></script>
 </body>
+
 </html>
