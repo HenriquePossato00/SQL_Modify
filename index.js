@@ -124,10 +124,10 @@ async function enviarParaLambda() {
 
   // seleciona o metodo http a partir do metodo SQL
   const metodoHTTP = {
-    SELECT: "GET",
-    INSERT: "POST",
-    UPDATE: "PUT",
-    DELETE: "DELETE"
+    SELECT: "GET", // selecione
+    INSERT: "POST", // inserir
+    UPDATE: "PUT", // atualizar
+    DELETE: "DELETE" // deletar
   }[metodoSQL];
 
   const { body } = montarBody(); // Chama o método para montar o Json da requisição
